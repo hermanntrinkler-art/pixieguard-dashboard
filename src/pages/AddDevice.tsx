@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function AddDevice() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { toast } = useToast();
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,8 +21,8 @@ export default function AddDevice() {
     
     if (!name.trim()) {
       toast({
-        title: "Name required",
-        description: "Please enter a device name.",
+        title: t('toast.error'),
+        description: t('toast.deviceNameRequired'),
         variant: "destructive",
       });
       return;
@@ -34,8 +36,8 @@ export default function AddDevice() {
     const device = createDevice(name.trim());
     
     toast({
-      title: "Device created!",
-      description: `${device.name} has been added to your devices.`,
+      title: t('toast.deviceCreated'),
+      description: t('toast.configGenerated'),
     });
     
     navigate(`/device/${device.id}`);
@@ -53,7 +55,7 @@ export default function AddDevice() {
           className="mb-8"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Dashboard
+          {t('device.backToDashboard')}
         </Button>
 
         <div className="bg-card border border-border rounded-2xl p-8 shadow-xl animate-scale-in">
@@ -62,36 +64,36 @@ export default function AddDevice() {
               <Monitor className="h-8 w-8" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold">Add New Device</h1>
+              <h1 className="text-2xl font-bold">{t('device.addNew')}</h1>
               <p className="text-muted-foreground">
-                Create a VPN configuration for a new device
+                {t('device.createConfig')}
               </p>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="name">Device Name</Label>
+              <Label htmlFor="name">{t('device.deviceName')}</Label>
               <Input
                 id="name"
                 type="text"
-                placeholder="e.g., MacBook Pro, iPhone 15, Gaming PC"
+                placeholder={t('device.namePlaceholder')}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
                 autoFocus
               />
               <p className="text-xs text-muted-foreground">
-                Choose a name that helps you identify this device later.
+                {t('device.nameHint')}
               </p>
             </div>
 
             <div className="bg-secondary/50 rounded-lg p-4 border border-border">
-              <h3 className="text-sm font-medium mb-2">What happens next?</h3>
+              <h3 className="text-sm font-medium mb-2">{t('device.whatNext')}</h3>
               <ul className="text-sm text-muted-foreground space-y-1">
-                <li>• A unique WireGuard configuration will be generated</li>
-                <li>• You can download or scan a QR code</li>
-                <li>• Import into any WireGuard client</li>
+                <li>• {t('device.nextSteps.generate')}</li>
+                <li>• {t('device.nextSteps.download')}</li>
+                <li>• {t('device.nextSteps.import')}</li>
               </ul>
             </div>
 
@@ -102,7 +104,7 @@ export default function AddDevice() {
                 className="flex-1"
                 onClick={() => navigate("/dashboard")}
               >
-                Cancel
+                {t('common.cancel')}
               </Button>
               <Button
                 type="submit"
@@ -111,11 +113,11 @@ export default function AddDevice() {
                 disabled={loading}
               >
                 {loading ? (
-                  "Creating..."
+                  t('device.creating')
                 ) : (
                   <>
                     <Plus className="h-4 w-4 mr-2" />
-                    Create Device
+                    {t('device.createDevice')}
                   </>
                 )}
               </Button>

@@ -1,0 +1,198 @@
+{
+  "common": {
+    "back": "Retour",
+    "cancel": "Annuler",
+    "copy": "Copier",
+    "copied": "Copié",
+    "download": "Télécharger",
+    "view": "Voir",
+    "delete": "Supprimer",
+    "created": "Créé",
+    "loading": "Chargement...",
+    "save": "Enregistrer"
+  },
+  "nav": {
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord",
+    "getStarted": "Commencer",
+    "settings": "Paramètres"
+  },
+  "home": {
+    "hero": {
+      "private": "Privé.",
+      "simple": "Simple.",
+      "secure": "Sécurisé.",
+      "description": "Gérez vos appareils VPN WireGuard en toute simplicité. Générez des configurations, scannez des codes QR et restez connecté en toute sécurité sur tous vos appareils."
+    },
+    "features": {
+      "title": "Pourquoi choisir PixieGuard ?",
+      "security": "Sécurité de Grade Militaire",
+      "securityDesc": "Le protocole WireGuard avec une cryptographie de pointe protège vos données.",
+      "fast": "Ultra Rapide",
+      "fastDesc": "Overhead minimal et performances optimisées pour une connectivité parfaite.",
+      "privacy": "Politique Zéro Journal",
+      "privacyDesc": "Votre vie privée compte. Nous ne stockons ni ne suivons jamais votre activité en ligne.",
+      "global": "Réseau Mondial",
+      "globalDesc": "Connectez-vous de n'importe où avec notre infrastructure de serveurs mondiale."
+    },
+    "benefits": {
+      "title": "Gestion des Appareils Simplifiée",
+      "subtitle": "Tout ce dont vous avez besoin pour gérer vos connexions VPN en un seul endroit.",
+      "items": {
+        "qr": "Génération instantanée de codes QR pour appareils mobiles",
+        "config": "Téléchargement de configurations en un clic",
+        "multiDevice": "Support multi-appareils avec configurations uniques",
+        "dashboard": "Tableau de bord épuré pour gérer tous vos appareils",
+        "guides": "Guides étape par étape pour toutes les plateformes"
+      }
+    },
+    "cta": {
+      "viewGuides": "Voir les Guides",
+      "createAccount": "Créer votre Compte",
+      "readyStart": "Prêt à Commencer ?",
+      "readyDesc": "Rejoignez des milliers d'utilisateurs qui font confiance à PixieGuard pour leurs besoins de gestion VPN."
+    },
+    "footer": {
+      "copyright": "© 2024 PixieGuard. Tous droits réservés."
+    }
+  },
+  "auth": {
+    "welcomeBack": "Bon Retour",
+    "signInDesc": "Connectez-vous pour accéder à votre tableau de bord PixieGuard",
+    "createAccountTitle": "Créer un Compte",
+    "createAccountDesc": "Rejoignez PixieGuard et commencez à gérer vos appareils VPN",
+    "email": "Email",
+    "emailPlaceholder": "vous@exemple.com",
+    "password": "Mot de passe",
+    "passwordPlaceholder": "Entrez votre mot de passe",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "signIn": "Se Connecter",
+    "signingIn": "Connexion en cours...",
+    "createAccount": "Créer un Compte",
+    "creatingAccount": "Création du compte...",
+    "noAccount": "Pas encore de compte ?",
+    "hasAccount": "Déjà un compte ?",
+    "backToHome": "Retour à l'Accueil"
+  },
+  "dashboard": {
+    "title": "Vos Appareils",
+    "subtitle": "Gérez toutes vos configurations VPN en un seul endroit.",
+    "setupGuides": "Guides de Configuration",
+    "addDevice": "Ajouter un Appareil",
+    "noDevices": "Pas encore d'appareils",
+    "noDevicesDesc": "Ajoutez votre premier appareil pour commencer avec PixieGuard. Chaque appareil obtient sa propre configuration VPN unique.",
+    "addFirst": "Ajouter votre Premier Appareil"
+  },
+  "device": {
+    "addNew": "Ajouter un Nouvel Appareil",
+    "createConfig": "Créez une nouvelle configuration VPN WireGuard pour votre appareil.",
+    "deviceName": "Nom de l'Appareil",
+    "namePlaceholder": "ex., MacBook Pro, iPhone 15, PC Gaming",
+    "nameHint": "Choisissez un nom qui vous aidera à identifier cet appareil plus tard.",
+    "whatNext": "Que se passe-t-il ensuite ?",
+    "nextSteps": {
+      "generate": "Une configuration WireGuard unique sera générée pour cet appareil",
+      "download": "Vous pourrez télécharger le fichier de configuration ou scanner un code QR",
+      "import": "Importez la configuration dans votre client WireGuard"
+    },
+    "createDevice": "Créer l'Appareil",
+    "creating": "Création...",
+    "configuration": "Configuration",
+    "internalIp": "IP Interne",
+    "publicKey": "Clé Publique",
+    "nextStepsTitle": "Prochaines Étapes",
+    "nextStepsDesc": "Téléchargez le fichier de configuration ou scannez le code QR avec votre application WireGuard pour connecter cet appareil à votre VPN.",
+    "downloadConfig": "Télécharger la Configuration",
+    "viewQr": "Voir le Code QR",
+    "backToDashboard": "Retour au Tableau de Bord",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cet appareil ?"
+  },
+  "qr": {
+    "title": "Code QR",
+    "scanTitle": "Scanner le Code QR",
+    "scanDesc": "Scannez ce code QR avec votre application WireGuard pour importer la configuration automatiquement.",
+    "viewConfig": "Voir la Configuration",
+    "downloadConfig": "Télécharger .conf",
+    "howToScan": "Comment scanner",
+    "steps": {
+      "step1": "Ouvrez l'application WireGuard sur votre appareil",
+      "step2": "Appuyez sur le bouton + pour ajouter un nouveau tunnel",
+      "step3": "Sélectionnez 'Créer depuis un code QR'",
+      "step4": "Pointez votre caméra vers ce code QR"
+    }
+  },
+  "setup": {
+    "title": "Guides de Configuration",
+    "subtitle": "Suivez ces instructions étape par étape pour connecter vos appareils à PixieGuard.",
+    "platforms": {
+      "android": "Android",
+      "ios": "iOS",
+      "windows": "Windows",
+      "mac": "macOS"
+    },
+    "android": {
+      "step1Title": "Installer WireGuard",
+      "step1Desc": "Téléchargez et installez l'application officielle WireGuard depuis le Google Play Store.",
+      "step2Title": "Importer la Configuration",
+      "step2Desc": "Ouvrez WireGuard, appuyez sur le bouton + et sélectionnez 'Scanner un code QR' ou 'Importer depuis un fichier'.",
+      "step3Title": "Se Connecter",
+      "step3Desc": "Activez l'interrupteur à côté de votre tunnel pour vous connecter. Vous devrez peut-être approuver la permission VPN."
+    },
+    "ios": {
+      "step1Title": "Installer WireGuard",
+      "step1Desc": "Téléchargez et installez l'application officielle WireGuard depuis l'App Store.",
+      "step2Title": "Importer la Configuration",
+      "step2Desc": "Ouvrez WireGuard, appuyez sur 'Ajouter un tunnel' et choisissez 'Créer depuis un code QR' ou 'Créer depuis un fichier'.",
+      "step3Title": "Se Connecter",
+      "step3Desc": "Activez l'interrupteur pour vous connecter. Autorisez la configuration VPN lorsque demandé."
+    },
+    "windows": {
+      "step1Title": "Installer WireGuard",
+      "step1Desc": "Téléchargez et installez WireGuard depuis le site officiel (wireguard.com/install).",
+      "step2Title": "Importer la Configuration",
+      "step2Desc": "Cliquez sur 'Importer tunnel(s) depuis un fichier' et sélectionnez votre fichier .conf téléchargé.",
+      "step3Title": "Se Connecter",
+      "step3Desc": "Sélectionnez votre tunnel et cliquez sur 'Activer' pour vous connecter au VPN."
+    },
+    "mac": {
+      "step1Title": "Installer WireGuard",
+      "step1Desc": "Téléchargez WireGuard depuis le Mac App Store ou utilisez Homebrew: brew install wireguard-tools.",
+      "step2Title": "Importer la Configuration",
+      "step2Desc": "Ouvrez WireGuard, cliquez sur 'Importer tunnel(s) depuis un fichier' et sélectionnez votre fichier .conf.",
+      "step3Title": "Se Connecter",
+      "step3Desc": "Cliquez sur 'Activer' pour établir la connexion VPN."
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": "Langue",
+    "selectLanguage": "Sélectionnez votre langue préférée",
+    "languageChanged": "Langue modifiée",
+    "languageChangedDesc": "La langue de l'application a été mise à jour."
+  },
+  "toast": {
+    "welcomeBack": "Bon retour !",
+    "loggedIn": "Vous vous êtes connecté avec succès.",
+    "loginFailed": "Échec de connexion",
+    "checkCredentials": "Veuillez vérifier vos identifiants et réessayer.",
+    "accountCreated": "Compte créé !",
+    "welcomePixie": "Bienvenue sur PixieGuard. Configurons votre premier appareil.",
+    "registrationFailed": "Échec de l'inscription",
+    "tryAgain": "Veuillez réessayer.",
+    "deviceCreated": "Appareil créé !",
+    "configGenerated": "Votre configuration VPN a été générée.",
+    "deviceDeleted": "Appareil supprimé",
+    "deviceDeletedDesc": "L'appareil a été supprimé.",
+    "configCopied": "Configuration copiée",
+    "configCopiedDesc": "La configuration a été copiée dans le presse-papiers.",
+    "error": "Erreur",
+    "deviceNameRequired": "Veuillez entrer un nom d'appareil."
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oups ! Page non trouvée",
+    "backHome": "Retour à l'Accueil"
+  }
+}

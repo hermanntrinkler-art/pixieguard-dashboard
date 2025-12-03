@@ -1,41 +1,44 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { PixieLogo } from "@/components/PixieLogo";
 import { Shield, Lock, Zap, Globe, ArrowRight, CheckCircle } from "lucide-react";
 
-const features = [
-  {
-    icon: Shield,
-    title: "Military-Grade Security",
-    description: "WireGuard protocol with state-of-the-art encryption",
-  },
-  {
-    icon: Zap,
-    title: "Lightning Fast",
-    description: "Minimal overhead for maximum performance",
-  },
-  {
-    icon: Lock,
-    title: "Zero-Log Policy",
-    description: "Your data stays private, always",
-  },
-  {
-    icon: Globe,
-    title: "Global Network",
-    description: "Connect from anywhere in the world",
-  },
-];
-
-const benefits = [
-  "Easy device management",
-  "QR code configuration",
-  "One-click downloads",
-  "Cross-platform support",
-];
-
 export default function Index() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: Shield,
+      title: t('home.features.security'),
+      description: t('home.features.securityDesc'),
+    },
+    {
+      icon: Zap,
+      title: t('home.features.fast'),
+      description: t('home.features.fastDesc'),
+    },
+    {
+      icon: Lock,
+      title: t('home.features.privacy'),
+      description: t('home.features.privacyDesc'),
+    },
+    {
+      icon: Globe,
+      title: t('home.features.global'),
+      description: t('home.features.globalDesc'),
+    },
+  ];
+
+  const benefits = [
+    t('home.benefits.items.qr'),
+    t('home.benefits.items.config'),
+    t('home.benefits.items.multiDevice'),
+    t('home.benefits.items.dashboard'),
+    t('home.benefits.items.guides'),
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -56,14 +59,13 @@ export default function Index() {
             </div>
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-              <span className="text-foreground">Private.</span>{" "}
-              <span className="gradient-text">Simple.</span>{" "}
-              <span className="text-foreground">Secure.</span>
+              <span className="text-foreground">{t('home.hero.private')}</span>{" "}
+              <span className="gradient-text">{t('home.hero.simple')}</span>{" "}
+              <span className="text-foreground">{t('home.hero.secure')}</span>
             </h1>
             
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-              Manage your WireGuard VPN devices with ease. 
-              A professional dashboard for complete control over your secure connections.
+              {t('home.hero.description')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -73,7 +75,7 @@ export default function Index() {
                 onClick={() => navigate("/login")}
                 className="group"
               >
-                Get Started
+                {t('nav.getStarted')}
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
@@ -81,7 +83,7 @@ export default function Index() {
                 size="xl"
                 onClick={() => navigate("/setup")}
               >
-                View Setup Guides
+                {t('home.cta.viewGuides')}
               </Button>
             </div>
           </div>
@@ -100,10 +102,10 @@ export default function Index() {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl font-bold text-center mb-4">
-            Why <span className="gradient-text">PixieGuard</span>?
+            {t('home.features.title')}
           </h2>
           <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-            Everything you need to manage your VPN infrastructure in one beautiful interface.
+            {t('home.benefits.subtitle')}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -130,11 +132,10 @@ export default function Index() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-6">
-                Streamlined <span className="gradient-text">Device Management</span>
+                {t('home.benefits.title')}
               </h2>
               <p className="text-muted-foreground mb-8">
-                Add, configure, and manage all your VPN devices from a single dashboard. 
-                Generate configurations instantly and deploy across all your platforms.
+                {t('home.benefits.subtitle')}
               </p>
               <ul className="space-y-4">
                 {benefits.map((benefit) => (
@@ -172,13 +173,13 @@ export default function Index() {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready to <span className="gradient-text">Get Started</span>?
+            {t('home.cta.readyStart')}
           </h2>
           <p className="text-muted-foreground mb-8">
-            Join thousands of users who trust PixieGuard for their VPN management.
+            {t('home.cta.readyDesc')}
           </p>
           <Button variant="hero" size="xl" onClick={() => navigate("/register")}>
-            Create Your Account
+            {t('home.cta.createAccount')}
             <ArrowRight className="h-5 w-5" />
           </Button>
         </div>
@@ -189,7 +190,7 @@ export default function Index() {
         <div className="container mx-auto max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <PixieLogo size="sm" />
           <p className="text-sm text-muted-foreground">
-            © 2024 PixieGuard. All rights reserved.
+            {t('home.footer.copyright')}
           </p>
         </div>
       </footer>

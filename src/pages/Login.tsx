@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { toast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,14 +27,14 @@ export default function Login() {
 
     if (login(email, password)) {
       toast({
-        title: "Welcome back!",
-        description: "You have been logged in successfully.",
+        title: t('toast.welcomeBack'),
+        description: t('toast.loggedIn'),
       });
       navigate("/dashboard");
     } else {
       toast({
-        title: "Login failed",
-        description: "Please check your credentials and try again.",
+        title: t('toast.loginFailed'),
+        description: t('toast.checkCredentials'),
         variant: "destructive",
       });
     }
@@ -54,7 +56,7 @@ export default function Login() {
           className="mb-8"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Home
+          {t('auth.backToHome')}
         </Button>
 
         <div className="bg-card border border-border rounded-2xl p-8 shadow-2xl">
@@ -62,18 +64,18 @@ export default function Login() {
             <PixieLogo size="md" />
           </div>
 
-          <h1 className="text-2xl font-bold text-center mb-2">Welcome Back</h1>
+          <h1 className="text-2xl font-bold text-center mb-2">{t('auth.welcomeBack')}</h1>
           <p className="text-muted-foreground text-center mb-8">
-            Sign in to access your dashboard
+            {t('auth.signInDesc')}
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t('auth.email')}</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="you@example.com"
+                placeholder={t('auth.emailPlaceholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -81,7 +83,7 @@ export default function Login() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{t('auth.password')}</Label>
               <div className="relative">
                 <Input
                   id="password"
@@ -113,18 +115,18 @@ export default function Login() {
               className="w-full"
               disabled={loading}
             >
-              {loading ? "Signing in..." : "Sign In"}
+              {loading ? t('auth.signingIn') : t('auth.signIn')}
               {!loading && <ArrowRight className="h-4 w-4" />}
             </Button>
           </form>
 
           <p className="text-center text-sm text-muted-foreground mt-6">
-            Don't have an account?{" "}
+            {t('auth.noAccount')}{" "}
             <Link
               to="/register"
               className="text-primary hover:underline font-medium"
             >
-              Create one
+              {t('auth.createAccount')}
             </Link>
           </p>
         </div>

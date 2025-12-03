@@ -12,6 +12,7 @@ import DeviceDetail from "./pages/DeviceDetail";
 import QRCode from "./pages/QRCode";
 import Setup from "./pages/Setup";
 import Devices from "./pages/Devices";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/device/:id/qr" element={<QRCode />} />
           <Route path="/setup" element={<Setup />} />
           <Route path="/devices" element={<Devices />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
