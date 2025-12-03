@@ -1,0 +1,198 @@
+{
+  "common": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "copy": "Copy",
+    "copied": "Copied",
+    "download": "Download",
+    "view": "View",
+    "delete": "Delete",
+    "created": "Created",
+    "loading": "Loading...",
+    "save": "Save"
+  },
+  "nav": {
+    "login": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "getStarted": "Get Started",
+    "settings": "Settings"
+  },
+  "home": {
+    "hero": {
+      "private": "Private.",
+      "simple": "Simple.",
+      "secure": "Secure.",
+      "description": "Manage your WireGuard VPN devices with ease. Generate configurations, scan QR codes, and stay connected securely across all your devices."
+    },
+    "features": {
+      "title": "Why Choose PixieGuard?",
+      "security": "Military-Grade Security",
+      "securityDesc": "WireGuard protocol with state-of-the-art cryptography keeps your data safe.",
+      "fast": "Lightning Fast",
+      "fastDesc": "Minimal overhead and optimized performance for seamless connectivity.",
+      "privacy": "Zero-Log Policy",
+      "privacyDesc": "Your privacy matters. We never store or track your online activity.",
+      "global": "Global Network",
+      "globalDesc": "Connect from anywhere with our worldwide server infrastructure."
+    },
+    "benefits": {
+      "title": "Streamlined Device Management",
+      "subtitle": "Everything you need to manage your VPN connections in one place.",
+      "items": {
+        "qr": "Instant QR code generation for mobile devices",
+        "config": "One-click configuration downloads",
+        "multiDevice": "Multi-device support with unique configurations",
+        "dashboard": "Clean dashboard to manage all your devices",
+        "guides": "Step-by-step setup guides for all platforms"
+      }
+    },
+    "cta": {
+      "viewGuides": "View Setup Guides",
+      "createAccount": "Create Your Account",
+      "readyStart": "Ready to Get Started?",
+      "readyDesc": "Join thousands of users who trust PixieGuard for their VPN management needs."
+    },
+    "footer": {
+      "copyright": "© 2024 PixieGuard. All rights reserved."
+    }
+  },
+  "auth": {
+    "welcomeBack": "Welcome Back",
+    "signInDesc": "Sign in to access your PixieGuard dashboard",
+    "createAccountTitle": "Create Account",
+    "createAccountDesc": "Join PixieGuard and start managing your VPN devices",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "signIn": "Sign In",
+    "signingIn": "Signing in...",
+    "createAccount": "Create Account",
+    "creatingAccount": "Creating account...",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "backToHome": "Back to Home"
+  },
+  "dashboard": {
+    "title": "Your Devices",
+    "subtitle": "Manage all your VPN configurations in one place.",
+    "setupGuides": "Setup Guides",
+    "addDevice": "Add Device",
+    "noDevices": "No devices yet",
+    "noDevicesDesc": "Add your first device to get started with PixieGuard. Each device gets its own unique VPN configuration.",
+    "addFirst": "Add Your First Device"
+  },
+  "device": {
+    "addNew": "Add New Device",
+    "createConfig": "Create a new WireGuard VPN configuration for your device.",
+    "deviceName": "Device Name",
+    "namePlaceholder": "e.g., MacBook Pro, iPhone 15, Gaming PC",
+    "nameHint": "Choose a name that helps you identify this device later.",
+    "whatNext": "What happens next?",
+    "nextSteps": {
+      "generate": "A unique WireGuard configuration will be generated for this device",
+      "download": "You'll be able to download the config file or scan a QR code",
+      "import": "Import the configuration into your WireGuard client"
+    },
+    "createDevice": "Create Device",
+    "creating": "Creating...",
+    "configuration": "Configuration",
+    "internalIp": "Internal IP",
+    "publicKey": "Public Key",
+    "nextStepsTitle": "Next Steps",
+    "nextStepsDesc": "Download the configuration file or scan the QR code with your WireGuard app to connect this device to your VPN.",
+    "downloadConfig": "Download Configuration",
+    "viewQr": "View QR Code",
+    "backToDashboard": "Back to Dashboard",
+    "deleteConfirm": "Are you sure you want to delete this device?"
+  },
+  "qr": {
+    "title": "QR Code",
+    "scanTitle": "Scan QR Code",
+    "scanDesc": "Scan this QR code with your WireGuard app to import the configuration automatically.",
+    "viewConfig": "View Configuration",
+    "downloadConfig": "Download .conf",
+    "howToScan": "How to scan",
+    "steps": {
+      "step1": "Open the WireGuard app on your device",
+      "step2": "Tap the + button to add a new tunnel",
+      "step3": "Select 'Create from QR code'",
+      "step4": "Point your camera at this QR code"
+    }
+  },
+  "setup": {
+    "title": "Setup Guides",
+    "subtitle": "Follow these step-by-step instructions to connect your devices to PixieGuard.",
+    "platforms": {
+      "android": "Android",
+      "ios": "iOS",
+      "windows": "Windows",
+      "mac": "macOS"
+    },
+    "android": {
+      "step1Title": "Install WireGuard",
+      "step1Desc": "Download and install the official WireGuard app from the Google Play Store.",
+      "step2Title": "Import Configuration",
+      "step2Desc": "Open WireGuard, tap the + button, and select 'Scan from QR code' or 'Import from file'.",
+      "step3Title": "Connect",
+      "step3Desc": "Toggle the switch next to your tunnel to connect. You may need to approve the VPN permission."
+    },
+    "ios": {
+      "step1Title": "Install WireGuard",
+      "step1Desc": "Download and install the official WireGuard app from the App Store.",
+      "step2Title": "Import Configuration",
+      "step2Desc": "Open WireGuard, tap 'Add a tunnel', and choose 'Create from QR code' or 'Create from file'.",
+      "step3Title": "Connect",
+      "step3Desc": "Toggle the switch to connect. Allow VPN configuration when prompted."
+    },
+    "windows": {
+      "step1Title": "Install WireGuard",
+      "step1Desc": "Download and install WireGuard from the official website (wireguard.com/install).",
+      "step2Title": "Import Configuration",
+      "step2Desc": "Click 'Import tunnel(s) from file' and select your downloaded .conf file.",
+      "step3Title": "Connect",
+      "step3Desc": "Select your tunnel and click 'Activate' to connect to the VPN."
+    },
+    "mac": {
+      "step1Title": "Install WireGuard",
+      "step1Desc": "Download WireGuard from the Mac App Store or use Homebrew: brew install wireguard-tools.",
+      "step2Title": "Import Configuration",
+      "step2Desc": "Open WireGuard, click 'Import tunnel(s) from file' and select your .conf file.",
+      "step3Title": "Connect",
+      "step3Desc": "Click 'Activate' to establish the VPN connection."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "selectLanguage": "Select your preferred language",
+    "languageChanged": "Language changed",
+    "languageChangedDesc": "The application language has been updated."
+  },
+  "toast": {
+    "welcomeBack": "Welcome back!",
+    "loggedIn": "You have been logged in successfully.",
+    "loginFailed": "Login failed",
+    "checkCredentials": "Please check your credentials and try again.",
+    "accountCreated": "Account created!",
+    "welcomePixie": "Welcome to PixieGuard. Let's set up your first device.",
+    "registrationFailed": "Registration failed",
+    "tryAgain": "Please try again.",
+    "deviceCreated": "Device created!",
+    "configGenerated": "Your VPN configuration has been generated.",
+    "deviceDeleted": "Device deleted",
+    "deviceDeletedDesc": "The device has been removed.",
+    "configCopied": "Configuration copied",
+    "configCopiedDesc": "The configuration has been copied to your clipboard.",
+    "error": "Error",
+    "deviceNameRequired": "Please enter a device name."
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "backHome": "Return to Home"
+  }
+}

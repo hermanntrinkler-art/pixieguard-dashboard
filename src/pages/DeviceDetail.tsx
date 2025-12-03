@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { getDevice, Device, downloadConfig } from "@/lib/devices";
@@ -8,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function DeviceDetail() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const { toast } = useToast();
   const [device, setDevice] = useState<Device | null>(null);
@@ -29,8 +31,8 @@ export default function DeviceDetail() {
       await navigator.clipboard.writeText(device.config);
       setCopied(true);
       toast({
-        title: "Copied!",
-        description: "Configuration copied to clipboard.",
+        title: t('toast.configCopied'),
+        description: t('toast.configCopiedDesc'),
       });
       setTimeout(() => setCopied(false), 2000);
     }
@@ -52,7 +54,7 @@ export default function DeviceDetail() {
           className="mb-8"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Dashboard
+          {t('device.backToDashboard')}
         </Button>
 
         <div className="bg-card border border-border rounded-2xl p-8 shadow-xl animate-scale-in">
@@ -71,28 +73,28 @@ export default function DeviceDetail() {
             <div className="flex gap-3">
               <Button variant="outline" onClick={() => navigate(`/device/${device.id}/qr`)}>
                 <QrCode className="h-4 w-4 mr-2" />
-                QR Code
+                {t('qr.title')}
               </Button>
               <Button variant="hero" onClick={() => downloadConfig(device)}>
                 <Download className="h-4 w-4 mr-2" />
-                Download
+                {t('common.download')}
               </Button>
             </div>
           </div>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold">Configuration</h2>
+              <h2 className="text-lg font-semibold">{t('device.configuration')}</h2>
               <Button variant="ghost" size="sm" onClick={handleCopy}>
                 {copied ? (
                   <>
                     <Check className="h-4 w-4 mr-2 text-green-500" />
-                    Copied
+                    {t('common.copied')}
                   </>
                 ) : (
                   <>
                     <Copy className="h-4 w-4 mr-2" />
-                    Copy
+                    {t('common.copy')}
                   </>
                 )}
               </Button>
@@ -104,16 +106,15 @@ export default function DeviceDetail() {
           </div>
 
           <div className="mt-8 p-4 bg-primary/5 border border-primary/20 rounded-lg">
-            <h3 className="text-sm font-semibold text-primary mb-2">Next Steps</h3>
+            <h3 className="text-sm font-semibold text-primary mb-2">{t('device.nextStepsTitle')}</h3>
             <p className="text-sm text-muted-foreground">
-              Download this configuration or scan the QR code with your WireGuard app.{" "}
+              {t('device.nextStepsDesc')}{" "}
               <button 
                 onClick={() => navigate("/setup")}
                 className="text-primary hover:underline"
               >
-                View setup guides
-              </button>{" "}
-              for detailed instructions.
+                {t('dashboard.setupGuides')}
+              </button>
             </p>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Device, downloadConfig, deleteDevice } from "@/lib/devices";
@@ -11,6 +12,7 @@ interface DeviceCardProps {
 
 export function DeviceCard({ device, onDelete }: DeviceCardProps) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleDelete = () => {
     deleteDevice(device.id);
@@ -50,7 +52,7 @@ export function DeviceCard({ device, onDelete }: DeviceCardProps) {
           onClick={() => navigate(`/device/${device.id}`)}
         >
           <Eye className="h-4 w-4 mr-2" />
-          View
+          {t('common.view')}
         </Button>
         <Button
           variant="outline"
@@ -66,12 +68,12 @@ export function DeviceCard({ device, onDelete }: DeviceCardProps) {
           onClick={() => downloadConfig(device)}
         >
           <Download className="h-4 w-4 mr-2" />
-          Download
+          {t('common.download')}
         </Button>
       </div>
 
       <p className="text-xs text-muted-foreground mt-4">
-        Created {new Date(device.createdAt).toLocaleDateString()}
+        {t('common.created')} {new Date(device.createdAt).toLocaleDateString()}
       </p>
     </Card>
   );

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { DeviceCard } from "@/components/DeviceCard";
@@ -9,6 +10,7 @@ import { Plus, Shield, BookOpen } from "lucide-react";
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [devices, setDevices] = useState<Device[]>([]);
 
   useEffect(() => {
@@ -30,19 +32,19 @@ export default function Dashboard() {
       <main className="container mx-auto max-w-6xl px-4 pt-24 pb-12">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Your Devices</h1>
+            <h1 className="text-3xl font-bold mb-2">{t('dashboard.title')}</h1>
             <p className="text-muted-foreground">
-              Manage all your VPN configurations in one place.
+              {t('dashboard.subtitle')}
             </p>
           </div>
           <div className="flex gap-3">
             <Button variant="outline" onClick={() => navigate("/setup")}>
               <BookOpen className="h-4 w-4 mr-2" />
-              Setup Guides
+              {t('dashboard.setupGuides')}
             </Button>
             <Button variant="hero" onClick={() => navigate("/add-device")}>
               <Plus className="h-4 w-4 mr-2" />
-              Add Device
+              {t('dashboard.addDevice')}
             </Button>
           </div>
         </div>
@@ -52,14 +54,13 @@ export default function Dashboard() {
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
               <Shield className="h-10 w-10 text-primary" />
             </div>
-            <h2 className="text-xl font-semibold mb-2">No devices yet</h2>
+            <h2 className="text-xl font-semibold mb-2">{t('dashboard.noDevices')}</h2>
             <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-              Add your first device to get started with PixieGuard. 
-              Each device will receive a unique VPN configuration.
+              {t('dashboard.noDevicesDesc')}
             </p>
             <Button variant="hero" onClick={() => navigate("/add-device")}>
               <Plus className="h-4 w-4 mr-2" />
-              Add Your First Device
+              {t('dashboard.addFirst')}
             </Button>
           </div>
         ) : (

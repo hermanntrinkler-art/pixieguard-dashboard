@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function Register() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { toast } = useToast();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,14 +28,14 @@ export default function Register() {
 
     if (register(email, password, name)) {
       toast({
-        title: "Account created!",
-        description: "Welcome to PixieGuard. Let's set up your first device.",
+        title: t('toast.accountCreated'),
+        description: t('toast.welcomePixie'),
       });
       navigate("/dashboard");
     } else {
       toast({
-        title: "Registration failed",
-        description: "Please check your details and try again.",
+        title: t('toast.registrationFailed'),
+        description: t('toast.tryAgain'),
         variant: "destructive",
       });
     }
@@ -56,7 +58,7 @@ export default function Register() {
           className="mb-8"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Home
+          {t('auth.backToHome')}
         </Button>
 
         <div className="bg-card border border-border rounded-2xl p-8 shadow-2xl">
@@ -64,18 +66,18 @@ export default function Register() {
             <PixieLogo size="md" />
           </div>
 
-          <h1 className="text-2xl font-bold text-center mb-2">Create Account</h1>
+          <h1 className="text-2xl font-bold text-center mb-2">{t('auth.createAccountTitle')}</h1>
           <p className="text-muted-foreground text-center mb-8">
-            Start managing your VPN in minutes
+            {t('auth.createAccountDesc')}
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">{t('auth.name')}</Label>
               <Input
                 id="name"
                 type="text"
-                placeholder="John Doe"
+                placeholder={t('auth.namePlaceholder')}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
@@ -83,11 +85,11 @@ export default function Register() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t('auth.email')}</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="you@example.com"
+                placeholder={t('auth.emailPlaceholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -95,7 +97,7 @@ export default function Register() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{t('auth.password')}</Label>
               <div className="relative">
                 <Input
                   id="password"
@@ -128,18 +130,18 @@ export default function Register() {
               className="w-full"
               disabled={loading}
             >
-              {loading ? "Creating account..." : "Create Account"}
+              {loading ? t('auth.creatingAccount') : t('auth.createAccount')}
               {!loading && <ArrowRight className="h-4 w-4" />}
             </Button>
           </form>
 
           <p className="text-center text-sm text-muted-foreground mt-6">
-            Already have an account?{" "}
+            {t('auth.hasAccount')}{" "}
             <Link
               to="/login"
               className="text-primary hover:underline font-medium"
             >
-              Sign in
+              {t('auth.signIn')}
             </Link>
           </p>
         </div>
