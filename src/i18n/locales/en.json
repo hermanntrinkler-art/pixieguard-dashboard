@@ -116,6 +116,10 @@
     "viewConfig": "View Configuration",
     "downloadConfig": "Download .conf",
     "howToScan": "How to scan",
+    "serverNotConfigured": "Server not configured",
+    "serverNotConfiguredDesc": "Please configure your WireGuard server settings first for this configuration to work.",
+    "goToSettings": "Go to Settings",
+    "regenerateConfig": "Regenerate Config",
     "steps": {
       "step1": "Open the WireGuard app on your device",
       "step2": "Tap the + button to add a new tunnel",

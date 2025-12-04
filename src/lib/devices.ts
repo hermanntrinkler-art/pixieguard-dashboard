@@ -1,44 +1,34 @@
+import { createClient, buildClientConfigFile } from "@/lib/wireguard/clientGenerator";
+import { isServerConfigured } from "@/lib/storage/serverConfigStorage";
+
 export interface Device {
   id: string;
   name: string;
   config: string;
   internalIp: string;
   createdAt: string;
+  publicKey: string;
 }
 
 const STORAGE_KEY = 'pixieguard_devices';
 
-// Counter for IP assignment
-let ipCounter = 2;
-
-export function generateMockConfig(deviceName: string, ipAddress: string): string {
-  return `[Interface]
-PrivateKey = MOCK_PRIVATE_KEY_${Math.random().toString(36).substring(2, 15)}
-Address = ${ipAddress}
-DNS = 1.1.1.1, 8.8.8.8
-
-[Peer]
-PublicKey = SERVER_PUBLIC_KEY_PLACEHOLDER
-Endpoint = vpn.pixie-guard.com:51820
-AllowedIPs = 0.0.0.0/0, ::/0
-PersistentKeepalive = 25`;
-}
-
 export function getDevices(): Device[] {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored) {
-    const devices = JSON.parse(stored);
-    // Update IP counter based on existing devices
-    if (devices.length > 0) {
-      const maxIp = Math.max(...devices.map((d: Device) => {
-        const match = d.internalIp.match(/10\.8\.0\.(\d+)/);
-        return match ? parseInt(match[1]) : 0;
-      }));
-      ipCounter = maxIp + 1;
-    }
-    return devices;
+    return JSON.parse(stored);
   }
   return [];
+}
+
+function getNextIpIndex(): number {
+  const devices = getDevices();
+  if (devices.length === 0) return 0;
+  
+  const maxIp = Math.max(...devices.map((d: Device) => {
+    const match = d.internalIp.match(/10\.8\.0\.(\d+)/);
+    return match ? parseInt(match[1]) - 2 : 0;
+  }));
+  return maxIp + 1;
 }
 
 export function getDevice(id: string): Device | undefined {
@@ -48,21 +38,65 @@ export function getDevice(id: string): Device | undefined {
 
 export function createDevice(name: string): Device {
   const devices = getDevices();
-  const internalIp = `10.8.0.${ipCounter}/32`;
-  ipCounter++;
+  const index = getNextIpIndex();
+  const id = crypto.randomUUID();
+  
+  const client = createClient(id, name, index);
+  const config = buildClientConfigFile(client);
   
   const device: Device = {
-    id: crypto.randomUUID(),
+    id,
     name,
-    config: generateMockConfig(name, internalIp),
-    internalIp,
+    config,
+    internalIp: client.address,
     createdAt: new Date().toISOString(),
+    publicKey: client.publicKey,
   };
   
   devices.push(device);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(devices));
   
   return device;
+}
+
+export function updateDeviceConfig(id: string): Device | undefined {
+  const devices = getDevices();
+  const deviceIndex = devices.findIndex(d => d.id === id);
+  
+  if (deviceIndex === -1) return undefined;
+  
+  const device = devices[deviceIndex];
+  const match = device.internalIp.match(/10\.8\.0\.(\d+)/);
+  const index = match ? parseInt(match[1]) - 2 : 0;
+  
+  const client = createClient(id, device.name, index);
+  const config = buildClientConfigFile(client);
+  
+  devices[deviceIndex] = {
+    ...device,
+    config,
+    publicKey: client.publicKey,
+  };
+  
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(devices));
+  return devices[deviceIndex];
+}
+
+export function regenerateAllDeviceConfigs(): void {
+  const devices = getDevices();
+  
+  const updatedDevices = devices.map((device, index) => {
+    const client = createClient(device.id, device.name, index);
+    const config = buildClientConfigFile(client);
+    
+    return {
+      ...device,
+      config,
+      publicKey: client.publicKey,
+    };
+  });
+  
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedDevices));
 }
 
 export function deleteDevice(id: string): void {
@@ -82,3 +116,5 @@ export function downloadConfig(device: Device): void {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export { isServerConfigured };

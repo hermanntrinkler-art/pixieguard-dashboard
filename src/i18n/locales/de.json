@@ -116,6 +116,10 @@
     "viewConfig": "Konfiguration anzeigen",
     "downloadConfig": ".conf herunterladen",
     "howToScan": "So scannen Sie",
+    "serverNotConfigured": "Server nicht konfiguriert",
+    "serverNotConfiguredDesc": "Bitte konfigurieren Sie zuerst Ihre WireGuard-Server-Einstellungen, damit diese Konfiguration funktioniert.",
+    "goToSettings": "Zu Einstellungen",
+    "regenerateConfig": "Konfiguration neu generieren",
     "steps": {
       "step1": "Öffnen Sie die WireGuard-App auf Ihrem Gerät",
       "step2": "Tippen Sie auf die + Schaltfläche, um einen neuen Tunnel hinzuzufügen",
