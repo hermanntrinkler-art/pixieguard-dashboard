@@ -4,16 +4,19 @@ import { useTranslation } from "react-i18next";
 import { QRCodeSVG } from "qrcode.react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
-import { getDevice, Device, downloadConfig } from "@/lib/devices";
-import { ArrowLeft, Download, Monitor } from "lucide-react";
+import { getDevice, Device, downloadConfig, updateDeviceConfig } from "@/lib/devices";
+import { isServerConfigured } from "@/lib/storage/serverConfigStorage";
+import { ArrowLeft, Download, Monitor, AlertTriangle, RefreshCw } from "lucide-react";
 
 export default function QRCodePage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const [device, setDevice] = useState<Device | null>(null);
+  const [serverConfigured, setServerConfigured] = useState(false);
 
   useEffect(() => {
+    setServerConfigured(isServerConfigured());
     if (id) {
       const d = getDevice(id);
       if (d) {
@@ -23,6 +26,15 @@ export default function QRCodePage() {
       }
     }
   }, [id, navigate]);
+
+  const handleRegenerateConfig = () => {
+    if (id) {
+      const updated = updateDeviceConfig(id);
+      if (updated) {
+        setDevice(updated);
+      }
+    }
+  };
 
   if (!device) {
     return null;
@@ -54,6 +66,36 @@ export default function QRCodePage() {
           <p className="text-muted-foreground mb-8">
             {t('qr.scanDesc')}
           </p>
+
+          {!serverConfigured && (
+            <div className="mb-6 p-4 bg-destructive/10 border border-destructive/20 rounded-lg flex items-start gap-3">
+              <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+              <div className="text-left">
+                <p className="text-sm font-medium text-destructive">{t('qr.serverNotConfigured')}</p>
+                <p className="text-sm text-muted-foreground mt-1">{t('qr.serverNotConfiguredDesc')}</p>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="mt-2"
+                  onClick={() => navigate('/settings')}
+                >
+                  {t('qr.goToSettings')}
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {serverConfigured && (
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={handleRegenerateConfig}
+              className="mb-4"
+            >
+              <RefreshCw className="h-4 w-4 mr-2" />
+              {t('qr.regenerateConfig')}
+            </Button>
+          )}
 
           <div className="inline-block p-6 bg-white rounded-2xl shadow-lg mb-8">
             <QRCodeSVG
