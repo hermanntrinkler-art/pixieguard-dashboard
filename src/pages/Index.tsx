@@ -178,7 +178,7 @@ export default function Index() {
           <p className="text-muted-foreground mb-8">
             {t('home.cta.readyDesc')}
           </p>
-          <Button variant="hero" size="xl" onClick={() => navigate("/register")}>
+          <Button variant="hero" size="xl" onClick={() => navigate("/pricing")}>
             {t('home.cta.createAccount')}
             <ArrowRight className="h-5 w-5" />
           </Button>

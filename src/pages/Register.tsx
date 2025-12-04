@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PixieLogo } from "@/components/PixieLogo";
-import { register } from "@/lib/auth";
+import { useAuth } from "@/contexts/AuthContext";
 import { Eye, EyeOff, ArrowRight, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -13,20 +13,27 @@ export default function Register() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { toast } = useToast();
+  const { signUp, user } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user, navigate]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    const { error } = await signUp(email, password, name);
 
-    if (register(email, password, name)) {
+    if (!error) {
       toast({
         title: t('toast.accountCreated'),
         description: t('toast.welcomePixie'),
@@ -35,7 +42,7 @@ export default function Register() {
     } else {
       toast({
         title: t('toast.registrationFailed'),
-        description: t('toast.tryAgain'),
+        description: error.message || t('toast.tryAgain'),
         variant: "destructive",
       });
     }

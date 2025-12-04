@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PixieLogo } from "@/components/PixieLogo";
-import { login } from "@/lib/auth";
+import { useAuth } from "@/contexts/AuthContext";
 import { Eye, EyeOff, ArrowRight, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -13,19 +13,26 @@ export default function Login() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { toast } = useToast();
+  const { signIn, user } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user, navigate]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    const { error } = await signIn(email, password);
 
-    if (login(email, password)) {
+    if (!error) {
       toast({
         title: t('toast.welcomeBack'),
         description: t('toast.loggedIn'),
@@ -34,7 +41,7 @@ export default function Login() {
     } else {
       toast({
         title: t('toast.loginFailed'),
-        description: t('toast.checkCredentials'),
+        description: error.message || t('toast.checkCredentials'),
         variant: "destructive",
       });
     }
