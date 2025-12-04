@@ -170,7 +170,20 @@
     "language": "Idioma",
     "selectLanguage": "Selecciona tu idioma preferido",
     "languageChanged": "Idioma cambiado",
-    "languageChangedDesc": "El idioma de la aplicación ha sido actualizado."
+    "languageChangedDesc": "El idioma de la aplicación ha sido actualizado.",
+    "serverConfig": "Configuración del Servidor",
+    "serverConfigDesc": "Ingresa los detalles de tu servidor WireGuard. Obtén la clave pública con 'wg show' en tu servidor.",
+    "serverPublicKey": "Clave Pública del Servidor",
+    "serverPublicKeyHint": "Ejecuta 'wg show' en tu servidor para obtener la clave pública (44 caracteres)",
+    "serverIp": "IP / Hostname del Servidor",
+    "serverPort": "Puerto",
+    "saveServer": "Guardar Configuración",
+    "serverSaved": "Configuración del servidor guardada",
+    "serverSavedDesc": "Tu configuración de WireGuard ha sido guardada.",
+    "invalidKey": "Clave pública inválida",
+    "invalidKeyDesc": "La clave pública debe tener exactamente 44 caracteres (32 bytes codificados en Base64).",
+    "invalidPort": "Puerto inválido",
+    "invalidPortDesc": "El puerto debe ser un número entre 1 y 65535."
   },
   "toast": {
     "welcomeBack": "¡Bienvenido de nuevo!",

@@ -170,7 +170,20 @@
     "language": "Language",
     "selectLanguage": "Select your preferred language",
     "languageChanged": "Language changed",
-    "languageChangedDesc": "The application language has been updated."
+    "languageChangedDesc": "The application language has been updated.",
+    "serverConfig": "Server Configuration",
+    "serverConfigDesc": "Enter your WireGuard server details. Get the public key from your server using 'wg show'.",
+    "serverPublicKey": "Server Public Key",
+    "serverPublicKeyHint": "Run 'wg show' on your server to get the public key (44 characters)",
+    "serverIp": "Server IP / Hostname",
+    "serverPort": "Port",
+    "saveServer": "Save Server Config",
+    "serverSaved": "Server configuration saved",
+    "serverSavedDesc": "Your WireGuard server settings have been saved.",
+    "invalidKey": "Invalid public key",
+    "invalidKeyDesc": "The public key must be exactly 44 characters (Base64 encoded 32 bytes).",
+    "invalidPort": "Invalid port",
+    "invalidPortDesc": "The port must be a number between 1 and 65535."
   },
   "toast": {
     "welcomeBack": "Welcome back!",
